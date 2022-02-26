@@ -4,6 +4,7 @@ import Adafruit_DHT
 from base64 import bdec
 from base64 import benc
 from os import system
+import json
 #
 class dht(Object):
     def __init__(self,gpio_dht,dht_type):
@@ -30,4 +31,5 @@ class dht(Object):
             h=h
             )
         
-config = sys.stdin()
+config = json.loads(sys.stdin())
+DHTsensor=dht(config["gpio"],config["dht"])
