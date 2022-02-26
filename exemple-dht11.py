@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 import sys
 import Adafruit_DHT
-from base64 import bdec
-from base64 import benc
-from os import system
 import json
 #
 class dht(Object):
