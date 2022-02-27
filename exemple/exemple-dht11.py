@@ -3,7 +3,7 @@ import sys
 import Adafruit_DHT
 import json
 #
-class dht(Object):
+class dht(object):
     def __init__(self,gpio_dht,dht_type):
         self.dht,self.gpio = gpio_dht,dht_type
         
