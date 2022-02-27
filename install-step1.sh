@@ -1,16 +1,18 @@
 #!/bin/bash
 install_config(){
 configjsondht="ewogICAgImdwaW8iOiA0LAogICAgImRodCI6IDExLAogICAgImRpc3BsYXkiOiB7 CiAgICAgICAgICAgICAgICAgICAgInRlbXBlcmF0dXJlIjogdHJ1ZSwKICAgICAg ICAgICAgICAgICAgICAiaHVtaWRpdHkiOiB0cnVlLAogICAgICAgICAgICAgICAg ICAgICJzcGFjaW5nIjogMQogICAgICAgICAgICAgICAgfQp9Cgo="
-
+echo configjsondht > /tmp/configdhtb64
+configdec4dht=$(openssl base64 -d </tmp/configdhtb64)
+echo configdec4dht > /opt/rpi-dht-auto/configs
+rm -rf /tmp/configdhtb64 
 }
 
-install_folders(){}
+install_folders(){
+    sudo mkdir -p /opt/rpi-dht-auto/configs
+    sudo mkdir -p /opt/rpi-dht-auto/bin
+}
 
 install_new_user(){}
-
-
-
-
 
 
 install_bases_requirements(){
@@ -21,7 +23,7 @@ install_bases_requirements(){
         sudo apt update -y && sudo apt full-upgrade -y && sudo apt install autoremove -y && sudo apt install autoclean -y
         echo "installation de git-core... et lest outils de builds essentiels"
         sudo apt-get install -y git-core
-        sudo apt-get install build-essential python-dev
+        sudo apt-get install build-essential python3-dev python3 python3-pip
         
         clear
         echo "Bon il est imposer au moins quelques outils de bases."
@@ -44,8 +46,3 @@ install_bases_requirements(){
     fi
     
 }
-
-
-
-
-#need changes for be ok for every linux system's 
