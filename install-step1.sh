@@ -40,6 +40,7 @@ install_bases_requirements(){
         then
         echo "On met a jour ce system et ensuite..."
         sudo pacman --noconfirm -Syy && sudo pacman --noconfirm -Syu
+        
         echo "installation de git-core... et lest outils de builds essentiels"
         sudo pacman --noconfirm -S git
         sudo pacman --noconfirm -S base base-devel linux-firmware gcc cmake make fakeroot python3 python-pip
@@ -48,7 +49,7 @@ install_bases_requirements(){
         echo "Bon il est imposer au moins quelques outils de bases."
         echo "wget, curl, nano, vim, cron ... ranger et elinks ansi que tmux et screen."
         sleep 5s
-        sudo apt install -y wget curl nano vim cron ranger elinks tmux screen
+        sudo pacman -S --noconfirm wget curl nano vim cron ranger elinks tmux screen
         echo "ok"
         echo "clone le repository de adafruit pour lire le dht"
         git clone https://github.com/adafruit/Adafruit_Python_DHT.git
