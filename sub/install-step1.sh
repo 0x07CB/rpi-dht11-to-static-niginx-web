@@ -77,3 +77,19 @@ main_2(){
 main_1(){
     install_bases_requirements()
 }
+
+clear
+echo "========"
+echo "=Step 1="
+echo "========"
+main1()
+sleep 1s
+clear
+main2()
+sleep 2s 
+clear
+echo "Okay you need to undersant that is a lot of automata..."
+sleep 2s
+echo "By security I call manage of ufw(firewall too simple...)"
+./sub/manage-ufw.sh "deploy-yourself" "/opt/rpi-dht-auto/bin" "/usr/bin" # action deploy-folder symlink
+
