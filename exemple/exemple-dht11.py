@@ -32,7 +32,7 @@ class dht(object):
             h=h
             )
 #       
-config = json.loads(sys.stdin())
+config = json.loads(str(sys.stdin))
 DHTsensor=dht(config["gpio"],config["dht"])
 DHTsensor.get_info()
 if config["display"]["temperature"] or config["display"]["humidity"]:
