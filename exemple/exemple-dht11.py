@@ -21,9 +21,11 @@ class dht(Object):
         h = "{0:0.1f}".format(self.humidity)
         space = " " * conv_space
         if not temp: 
-            t="",space=""
+            t=""
+            space=""
         if not humd: 
-            h="",space=""
+            h=""
+            space=""
         print ("{t}{space}{h}").format(
             t=t,
             space=space,
