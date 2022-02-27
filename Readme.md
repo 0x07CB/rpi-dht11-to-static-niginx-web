@@ -24,3 +24,6 @@ script: install-base-requirements.sh
 1. `git-core` 
 2. `python3`
 3. `Adafruit_Python_DHT`
+4. numpy
+5. markdown
+7. keyboard
