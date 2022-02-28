@@ -7,6 +7,13 @@ function getspe(){ # "special-message"
 }
 
 function makeinstall(){
+    sudo make
+    sudo chmod +x endlessh
+    sudo chmod 600 endlessh
+    sudo cp endlessh /usr/local/bin/endlessh
+}
+
+function builddocker(){
     
 
 }
