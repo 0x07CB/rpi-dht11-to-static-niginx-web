@@ -111,7 +111,18 @@ echo "=Step 3="
 echo "========"
 echo "  sshd  "
 echo "========"
+#first firewall cause after need to setup
+baseos=$(grep '^ID_LIKE' /etc/os-release)
+if [ baseos -eq "debian" ]
+then
+sudo apt install -y ufw
+else
+sudo pacman --noconfirm -S ufw
+fi
 
+bash sshd-automatic-hardening.sh
+systemctl enable sshd
+systemctl restart sshd
 
 
 sleep 2s
@@ -121,7 +132,12 @@ echo "=Step 4="
 echo "========"
 echo "firewall"
 echo "========"
-
+echo " (setup) "
+    
+cp ufw-never-stop.sh /opt/
+chmod 600 /opt/ufw-never-stop.sh
+chmod a+x /opt/ufw-never-stop.sh
+chmod a-rw /opt/ufw-never-stop.sh
 
 
 

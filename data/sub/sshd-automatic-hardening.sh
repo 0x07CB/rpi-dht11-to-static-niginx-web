@@ -41,23 +41,18 @@ function made_new_sshd(){
     cp /tmp/sshd/sshd_config /etc/ssh/sshd_config
 }
 
-
 baseos=$(grep '^ID_LIKE' /etc/os-release)
 if [ baseos -eq "debian" ]
     then
     sudo apt update -y && sudo apt install -y fail2ban 
     sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config-old 
-    
-    
+    service sshd restart
 else
-    if [ baseos -eq "debian" ]
-        then
-        sudo pacman --noconfirm -Syy
-        sudo pacman --noconfirm -Syu
-        sudo pacman --noconfirm -S fail2ban
-        sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config-old 
-    fi
-    
+    sudo pacman --noconfirm -Syy
+    sudo pacman --noconfirm -Syu
+    sudo pacman --noconfirm -S fail2ban
+    sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config-old
+    systemctl restart sshd
 fi
 
     echo "backup of sshd configuration ok."
@@ -72,4 +67,14 @@ fi
     echo "------------"
     echo "sshd configuration are in complete review now, this script made all in basics rules of hardening. hold on."
 
-    made_new_sshd()
+made_new_sshd()
+configure_fail2ban()
+activate_fail2ban()
+if [ baseos -eq "Arch" ]
+then
+deploy_sshguard()
+configure_sshguard()
+activate_sshguard()
+fi
+
+

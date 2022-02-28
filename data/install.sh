@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo bash sub/install-step1.sh
+sudo bash sub/install-and-hardening1.sh
