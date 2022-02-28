@@ -82,6 +82,8 @@ clear
 echo "========"
 echo "=Step 1="
 echo "========"
+echo "deps set"
+echo "========"
 main1()
 sleep 1s
 clear
@@ -90,6 +92,40 @@ sleep 2s
 clear
 echo "Okay you need to undersant that is a lot of automata..."
 sleep 2s
-echo "By security I call manage of ufw(firewall too simple...)"
-./sub/manage-ufw.sh "deploy-yourself" "/opt/rpi-dht-auto/bin" "/usr/bin" # action deploy-folder symlink
+clear
+echo "========"
+echo "=Step 2="
+echo "========"
+echo "fail2ban"
+echo "========"
+
+
+
+
+
+
+sleep 2s
+clear
+echo "========"
+echo "=Step 3="
+echo "========"
+echo "  sshd  "
+echo "========"
+
+
+
+sleep 2s
+clear
+echo "========"
+echo "=Step 4="
+echo "========"
+echo "firewall"
+echo "========"
+
+
+
+
+
+# echo "By security I call manage of ufw(firewall too simple...)"
+#./sub/manage-ufw.sh "deploy-yourself" "/opt/rpi-dht-auto/bin" "/usr/bin" # action deploy-folder symlink
 
