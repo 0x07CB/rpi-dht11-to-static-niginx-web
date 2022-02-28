@@ -1,7 +1,11 @@
 #!/bin/bash
-
-# 1= port 
+# 1= compress #2 subsystem e r t admin user monitor
 function made_new_sshd(){
+    admin = "Picard"
+    user = "Cadet"
+    monitor = "Data"
+    compress = "yes"
+    sftpsub = "no"
     port = $(od -A n -t d -N 2 /dev/urandom)
     sudo rm -rf /etc/ssh/sshd_config
     mkdir /tmp/sshd/ && touch /tmp/sshd/sshd_config

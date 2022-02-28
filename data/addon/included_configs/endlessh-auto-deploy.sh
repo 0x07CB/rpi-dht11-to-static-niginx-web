@@ -7,6 +7,7 @@ function getspe(){ # "special-message"
 }
 
 function makeinstall(){
+    #use parts
     sudo make
     sudo chmod +x endlessh
     sudo chmod 600 endlessh
