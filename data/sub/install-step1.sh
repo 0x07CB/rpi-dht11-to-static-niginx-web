@@ -61,7 +61,7 @@ install_bases_requirements(){
         echo "creation des dossiers, configurations de bases du projet lui meme..."
     else
         echo -e "System inconnu."
-        exit(-1)
+        
     fi
     fi
     
