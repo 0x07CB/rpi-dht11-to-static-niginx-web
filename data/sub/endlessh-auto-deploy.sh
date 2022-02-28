@@ -21,3 +21,4 @@ function builddocker(){
 getspe()
 makeinstall()
 builddocker()
+#need an function to deploy one

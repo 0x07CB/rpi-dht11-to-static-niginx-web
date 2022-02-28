@@ -46,7 +46,21 @@ baseos=$(grep '^ID_LIKE' /etc/os-release)
 if [ baseos -eq "debian" ]
     then
     sudo apt update -y && sudo apt install -y fail2ban 
-    sudo cp /etc/ssh/sshd_config etc/ssh/sshd_config-old && echo "backup of sshd configuration ok."
+    sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config-old 
+    
+    
+else
+    if [ baseos -eq "debian" ]
+        then
+        sudo pacman --noconfirm -Syy
+        sudo pacman --noconfirm -Syu
+        sudo pacman --noconfirm -S fail2ban
+        sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config-old 
+    fi
+    
+fi
+
+    echo "backup of sshd configuration ok."
     echo ""
     echo "	$OpenBSD: sshd_config,v 1.104 2021/07/02 05:11:21 dtucker Exp $"
     echo "This is the sshd server system-wide configuration file.  See sshd_config(5) for more information. "
@@ -59,9 +73,3 @@ if [ baseos -eq "debian" ]
     echo "sshd configuration are in complete review now, this script made all in basics rules of hardening. hold on."
 
     made_new_sshd()
-    
-else
-    
-    
-    
-fi
