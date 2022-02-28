@@ -14,6 +14,9 @@ function makeinstall(){
 }
 
 function builddocker(){
-    
-
+    sudo docker build .
 }
+
+getspe()
+makeinstall()
+builddocker()
