@@ -20,7 +20,7 @@ install_bases_requirements(){
         echo "installation de git-core... et lest outils de builds essentiels"
         sudo apt-get install -y git-core
         sudo apt-get install -y build-essential python3-dev python3 python3-pip
-        
+        sudo python -m pip install -r requirements.txt
         clear
         echo "Bon il est imposer au moins quelques outils de bases."
         echo "wget, curl, nano, vim, cron ... ranger et elinks ansi que tmux et screen."
@@ -44,7 +44,7 @@ install_bases_requirements(){
         echo "installation de git-core... et lest outils de builds essentiels"
         sudo pacman --noconfirm -S git
         sudo pacman --noconfirm -S base base-devel linux-firmware gcc cmake make fakeroot python3 python-pip
-        
+        sudo python -m pip install -r requirements.txt
         clear
         echo "Bon il est imposer au moins quelques outils de bases."
         echo "wget, curl, nano, vim, cron ... ranger et elinks ansi que tmux et screen."
@@ -61,7 +61,7 @@ install_bases_requirements(){
         echo "creation des dossiers, configurations de bases du projet lui meme..."
     else
         echo -e "System inconnu."
-        exit(-1)
+        
     fi
     fi
     
@@ -82,6 +82,8 @@ clear
 echo "========"
 echo "=Step 1="
 echo "========"
+echo "deps set"
+echo "========"
 main1()
 sleep 1s
 clear
@@ -90,6 +92,56 @@ sleep 2s
 clear
 echo "Okay you need to undersant that is a lot of automata..."
 sleep 2s
-echo "By security I call manage of ufw(firewall too simple...)"
-./sub/manage-ufw.sh "deploy-yourself" "/opt/rpi-dht-auto/bin" "/usr/bin" # action deploy-folder symlink
+clear
+echo "========"
+echo "=Step 2="
+echo "========"
+echo "fail2ban"
+echo "========"
+
+
+
+
+
+
+sleep 2s
+clear
+echo "========"
+echo "=Step 3="
+echo "========"
+echo "  sshd  "
+echo "========"
+#first firewall cause after need to setup
+baseos=$(grep '^ID_LIKE' /etc/os-release)
+if [ baseos -eq "debian" ]
+then
+sudo apt install -y ufw
+else
+sudo pacman --noconfirm -S ufw
+fi
+
+bash sshd-automatic-hardening.sh
+systemctl enable sshd
+systemctl restart sshd
+
+
+sleep 2s
+clear
+echo "========"
+echo "=Step 4="
+echo "========"
+echo "firewall"
+echo "========"
+echo " (setup) "
+    
+cp ufw-never-stop.sh /opt/
+chmod 600 /opt/ufw-never-stop.sh
+chmod a+x /opt/ufw-never-stop.sh
+chmod a-rw /opt/ufw-never-stop.sh
+
+
+
+
+# echo "By security I call manage of ufw(firewall too simple...)"
+#./sub/manage-ufw.sh "deploy-yourself" "/opt/rpi-dht-auto/bin" "/usr/bin" # action deploy-folder symlink
 

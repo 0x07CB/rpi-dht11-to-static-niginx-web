@@ -1,7 +1,11 @@
 #!/bin/bash
-
-# 1= port 
+# 1= compress #2 subsystem e r t admin user monitor
 function made_new_sshd(){
+    admin = "Picard"
+    user = "Cadet"
+    monitor = "Data"
+    compress = "yes"
+    sftpsub = "no"
     port = $(od -A n -t d -N 2 /dev/urandom)
     sudo rm -rf /etc/ssh/sshd_config
     mkdir /tmp/sshd/ && touch /tmp/sshd/sshd_config
@@ -37,12 +41,21 @@ function made_new_sshd(){
     cp /tmp/sshd/sshd_config /etc/ssh/sshd_config
 }
 
-
 baseos=$(grep '^ID_LIKE' /etc/os-release)
 if [ baseos -eq "debian" ]
     then
     sudo apt update -y && sudo apt install -y fail2ban 
-    sudo cp /etc/ssh/sshd_config etc/ssh/sshd_config-old && echo "backup of sshd configuration ok."
+    sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config-old 
+    service sshd restart
+else
+    sudo pacman --noconfirm -Syy
+    sudo pacman --noconfirm -Syu
+    sudo pacman --noconfirm -S fail2ban
+    sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config-old
+    systemctl restart sshd
+fi
+
+    echo "backup of sshd configuration ok."
     echo ""
     echo "	$OpenBSD: sshd_config,v 1.104 2021/07/02 05:11:21 dtucker Exp $"
     echo "This is the sshd server system-wide configuration file.  See sshd_config(5) for more information. "
@@ -54,10 +67,14 @@ if [ baseos -eq "debian" ]
     echo "------------"
     echo "sshd configuration are in complete review now, this script made all in basics rules of hardening. hold on."
 
-    made_new_sshd()
-    
-else
-    
-    
-    
+made_new_sshd()
+configure_fail2ban()
+activate_fail2ban()
+if [ baseos -eq "Arch" ]
+then
+deploy_sshguard()
+configure_sshguard()
+activate_sshguard()
 fi
+
+
