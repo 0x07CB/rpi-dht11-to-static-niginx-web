@@ -38,5 +38,5 @@ done
 
 # next code is for detect stoped and restart with an procedure complete
 # and if nothing work you have an notification
-# if the logs repeat 3 time danger (use grep and tail) so the action is total and this script can send signal to yo, if he can't do the procedure of repair firewall, he down all interfaces next
+# if the logs repeat 3 time danger (use grep and tail) so the action is total and this script can send signal to yo, if he can't do the procedure of repair firewall, he down all interfaces next 
 

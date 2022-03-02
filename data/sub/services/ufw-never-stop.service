@@ -1,0 +1,13 @@
+[Unit]
+Description=ufw don’t disable, the script
+After=network.target
+StartLimitIntervalSec=40
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=20
+User=root
+ExecStart=/bin/bash /opt/ufw-never-stop.sh
+[Install]
+WantedBy=multi-user.target
