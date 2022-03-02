@@ -4,6 +4,6 @@ RUN pacman --noconfirm -Syy && pacman --noconfirm -Syu
 WORKDIR ~/
 COPY data/install.sh /root/
 COPY data/sub /root/
-RUN bash install.sh
+RUN bash /root/install.sh
 CMD /bin/bash
 
