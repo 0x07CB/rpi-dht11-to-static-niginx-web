@@ -1,7 +1,9 @@
 FROM archlinux/archlinux 
 RUN pacman-key --init
 RUN pacman --noconfirm -Syy && pacman --noconfirm -Syu
-COPY ./data/ ~/data/
-RUN bash ~/data/install.sh
+WORKDIR ~/
+COPY data/install.sh /root/
+COPY data/sub /root/
+RUN bash install.sh
 CMD /bin/bash
 
