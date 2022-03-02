@@ -66,8 +66,11 @@ echo "=Step 2="
 echo "========"
 echo "fail2ban"
 echo "========"
+pacman --noconfirm -S fail2ban
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf-
+cp configs/jail.conf /etc/fail2ban/jail.conf
 
-
+systemctl enable --now fail2ban 
 
 
 
@@ -80,13 +83,7 @@ echo "========"
 echo "  sshd  "
 echo "========"
 #first firewall cause after need to setup
-baseos=$(grep '^ID_LIKE' /etc/os-release)
-if [ baseos -eq "debian" ]
-then
-sudo apt install -y ufw
-else
 sudo pacman --noconfirm -S ufw
-fi
 
 bash sshd-automatic-hardening.sh
 systemctl enable sshd
@@ -106,7 +103,7 @@ cp ufw-never-stop.sh /opt/
 chmod 600 /opt/ufw-never-stop.sh
 chmod a+x /opt/ufw-never-stop.sh
 chmod a-rw /opt/ufw-never-stop.sh
-
+sudo cp services/ufw-never-stop.service /etc/services/system/services/
 
 
 
