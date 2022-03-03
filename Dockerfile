@@ -5,4 +5,3 @@ WORKDIR ~/deploy
 COPY ./data/* ~/data/
 RUN bash ~/data/install.sh
 CMD /bin/bash
-
