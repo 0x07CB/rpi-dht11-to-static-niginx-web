@@ -12,32 +12,6 @@ install_folders(){
     sudo mkdir -p /opt/rpi-dht-auto/banner
 }
 install_bases_requirements(){
-    baseos=$(grep '^ID_LIKE' /etc/os-release)
-    if [ baseos -eq "debian" ]
-    then
-        echo "On met a jour ce system et ensuite..."
-        sudo apt update -y && sudo apt full-upgrade -y && sudo apt install autoremove -y && sudo apt install autoclean -y
-        echo "installation de git-core... et lest outils de builds essentiels"
-        sudo apt-get install -y git-core
-        sudo apt-get install -y build-essential python3-dev python3 python3-pip
-        sudo python -m pip install -r requirements.txt
-        clear
-        echo "Bon il est imposer au moins quelques outils de bases."
-        echo "wget, curl, nano, vim, cron ... ranger et elinks ansi que tmux et screen."
-        sleep 5s
-        sudo apt install -y wget curl nano vim cron ranger elinks tmux screen
-        echo "ok"
-        echo "clone le repository de adafruit pour lire le dht"
-        git clone https://github.com/adafruit/Adafruit_Python_DHT.git
-        cd Adafruit_Python_DHT
-        sudo python setup.py install
-        #fin de l'install de base
-        echo "bon on passe a la suite."
-        echo "on prepare le terrain pour le projet."
-        echo "creation des dossiers, configurations de bases du projet lui meme..."
-    else
-     if [ baseos -eq "arch" ]
-        then
         echo "On met a jour ce system et ensuite..."
         sudo pacman --noconfirm -Syy && sudo pacman --noconfirm -Syu
         
@@ -58,13 +32,7 @@ install_bases_requirements(){
         #fin de l'install de base
         echo "bon on passe a la suite."
         echo "on prepare le terrain pour le projet."
-        echo "creation des dossiers, configurations de bases du projet lui meme..."
-    else
-        echo -e "System inconnu."
-        
-    fi
-    fi
-    
+        echo "creation des dossiers, configurations de bases du projet lui meme..."    
 }
 
 main_2(){
@@ -98,8 +66,11 @@ echo "=Step 2="
 echo "========"
 echo "fail2ban"
 echo "========"
+pacman --noconfirm -S fail2ban
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf-
+cp configs/jail.conf /etc/fail2ban/jail.conf
 
-
+systemctl enable --now fail2ban 
 
 
 
@@ -112,13 +83,7 @@ echo "========"
 echo "  sshd  "
 echo "========"
 #first firewall cause after need to setup
-baseos=$(grep '^ID_LIKE' /etc/os-release)
-if [ baseos -eq "debian" ]
-then
-sudo apt install -y ufw
-else
 sudo pacman --noconfirm -S ufw
-fi
 
 bash sshd-automatic-hardening.sh
 systemctl enable sshd
@@ -138,7 +103,7 @@ cp ufw-never-stop.sh /opt/
 chmod 600 /opt/ufw-never-stop.sh
 chmod a+x /opt/ufw-never-stop.sh
 chmod a-rw /opt/ufw-never-stop.sh
-
+sudo cp services/ufw-never-stop.service /etc/services/system/services/
 
 
 
