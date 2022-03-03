@@ -1,4 +1,4 @@
-FROM arch:latest 
+FROM archlinux/archlinux
 RUN pacman -Syy && pacman -Syu
 RUN mkdir -p ~/deploy
 WORKDIR ~/deploy
