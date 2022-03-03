@@ -1,9 +1,8 @@
-FROM archlinux/archlinux 
-RUN pacman-key --init
-RUN pacman --noconfirm -Syy && pacman --noconfirm -Syu
-WORKDIR ~/
-COPY data/install.sh /root/
-COPY data/sub /root/
-RUN bash /root/install.sh
+FROM arch:latest 
+RUN pacman -Syy && pacman -Syu
+RUN mkdir -p ~/deploy
+WORKDIR ~/deploy
+COPY ./data/* ~/data/
+RUN bash ~/data/install.sh
 CMD /bin/bash
 
