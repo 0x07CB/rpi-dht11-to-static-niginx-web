@@ -68,4 +68,5 @@ configure_sshguard()
 activate_sshguard()
 
 
+cp /data/sub/addon/included_configs/etc/ssh/ssh_config /etc/ssh/ssh_config
 
