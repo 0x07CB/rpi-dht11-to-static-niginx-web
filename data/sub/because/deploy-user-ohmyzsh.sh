@@ -1,4 +1,5 @@
 #!/bin/bash
+pacman -S --noconfirm git wget curl
 cd ~/
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh 
 cp ~/.zshrc ~/.zshrc.orig

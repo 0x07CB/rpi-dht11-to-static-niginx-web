@@ -38,7 +38,6 @@ install_bases_requirements(){
 main_2(){
     echo "installation des dossiers de bases dans /opt ..."
     install_folders()
-    echo "install config de base incluse dans ce script."
     install_config()
 }
 
