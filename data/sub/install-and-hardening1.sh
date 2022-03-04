@@ -68,13 +68,10 @@ echo "========"
 echo "  sshd  "
 echo "========"
 #first firewall cause after need to setup
- pacman --noconfirm -S ufw
-
+pacman --noconfirm -S ufw
 bash sshd-automatic-hardening.sh
 systemctl enable sshd
 systemctl restart sshd
-
-
 sleep 2s
 clear
 echo "========"
@@ -83,12 +80,11 @@ echo "========"
 echo "firewall"
 echo "========"
 echo " (setup) "
-    
 cp ufw-never-stop.sh /opt/
 chmod 600 /opt/ufw-never-stop.sh
 chmod a+x /opt/ufw-never-stop.sh
 chmod a-rw /opt/ufw-never-stop.sh
- cp services/ufw-never-stop.service /etc/services/system/services/
+cp services/ufw-never-stop.service /etc/services/system/services/
 
 
 
