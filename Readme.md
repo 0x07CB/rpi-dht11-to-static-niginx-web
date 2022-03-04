@@ -1,4 +1,4 @@
-[![Codacy Security Scan](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/codacy.yml/badge.svg?branch=main)](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/codacy.yml)   
+[![Codacy Security Scan](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/codacy.yml/badge.svg?branch=main)](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/codacy.yml)   [![Docker Image CI](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/docker-image-.yml/badge.svg?branch=main)](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/docker-image-.yml)
 
 
 
