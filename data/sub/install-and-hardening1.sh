@@ -35,15 +35,7 @@ install_bases_requirements(){
         echo "creation des dossiers, configurations de bases du projet lui meme..."    
 }
 
-main_2(){
-    echo "installation des dossiers de bases dans /opt ..."
-    install_folders()
-    install_config()
-}
 
-main_1(){
-    install_bases_requirements()
-}
 
 clear
 echo "========"
@@ -51,10 +43,9 @@ echo "=Step 1="
 echo "========"
 echo "deps set"
 echo "========"
-main1()
-sleep 1s
-clear
-main2()
+install_folders()
+install_config()
+install_bases_requirements()
 sleep 2s 
 clear
 echo "Okay you need to undersant that is a lot of automata..."
@@ -68,12 +59,7 @@ echo "========"
 pacman --noconfirm -S fail2ban
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf-
 cp configs/jail.conf /etc/fail2ban/jail.conf
-
 systemctl enable --now fail2ban 
-
-
-
-
 sleep 2s
 clear
 echo "========"
