@@ -1,3 +1,7 @@
+[![Codacy Security Scan](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/codacy.yml/badge.svg?branch=main)](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/codacy.yml)   [![Docker Image CI](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/docker-image-.yml/badge.svg?branch=main)](https://github.com/0x07CB/rpi-dht11-to-static-niginx-web/actions/workflows/docker-image-.yml)
+
+
+
 #rpi dht11 to static web for free and opensource IoT 
 
 first this is to learn bash and made another program in python  for use bash more and python less (I learn more bash, intensive sessions now for automata)
