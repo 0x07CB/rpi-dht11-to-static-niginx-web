@@ -1,17 +1,17 @@
 #!/bin/bash
-install_config(){
+function install_config(){
 configjsondht="ewogICAgImdwaW8iOiA0LAogICAgImRodCI6IDExLAogICAgImRpc3BsYXkiOiB7 CiAgICAgICAgICAgICAgICAgICAgInRlbXBlcmF0dXJlIjogdHJ1ZSwKICAgICAg ICAgICAgICAgICAgICAiaHVtaWRpdHkiOiB0cnVlLAogICAgICAgICAgICAgICAg ICAgICJzcGFjaW5nIjogMQogICAgICAgICAgICAgICAgfQp9Cgo="
 echo configjsondht > /tmp/configdhtb64
 configdec4dht=$(openssl base64 -d </tmp/configdhtb64)
 echo configdec4dht > /opt/rpi-dht-auto/configs
 rm -rf /tmp/configdhtb64 
 }
-install_folders(){
+function install_folders(){
      mkdir -p /opt/rpi-dht-auto/configs
      mkdir -p /opt/rpi-dht-auto/bin
      mkdir -p /opt/rpi-dht-auto/banner
 }
-install_bases_requirements(){
+function install_bases_requirements(){
         echo "On met a jour ce system et ensuite..."
          pacman --noconfirm -Syy && sudo pacman --noconfirm -Syu
         
