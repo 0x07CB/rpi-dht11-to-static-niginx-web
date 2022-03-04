@@ -43,9 +43,9 @@ echo "=Step 1="
 echo "========"
 echo "deps set"
 echo "========"
-install_folders()
-install_config()
-install_bases_requirements()
+install_folders
+install_config
+install_bases_requirements
 sleep 2s 
 clear
 echo "Okay you need to undersant that is a lot of automata..."
