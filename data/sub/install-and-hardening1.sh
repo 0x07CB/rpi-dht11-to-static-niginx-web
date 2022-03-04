@@ -7,23 +7,23 @@ echo configdec4dht > /opt/rpi-dht-auto/configs
 rm -rf /tmp/configdhtb64 
 }
 install_folders(){
-    sudo mkdir -p /opt/rpi-dht-auto/configs
-    sudo mkdir -p /opt/rpi-dht-auto/bin
-    sudo mkdir -p /opt/rpi-dht-auto/banner
+     mkdir -p /opt/rpi-dht-auto/configs
+     mkdir -p /opt/rpi-dht-auto/bin
+     mkdir -p /opt/rpi-dht-auto/banner
 }
 install_bases_requirements(){
         echo "On met a jour ce system et ensuite..."
-        sudo pacman --noconfirm -Syy && sudo pacman --noconfirm -Syu
+         pacman --noconfirm -Syy && sudo pacman --noconfirm -Syu
         
         echo "installation de git-core... et lest outils de builds essentiels"
-        sudo pacman --noconfirm -S git
-        sudo pacman --noconfirm -S base base-devel linux-firmware gcc cmake make fakeroot python3 python-pip
-        sudo python -m pip install -r requirements.txt
+         pacman --noconfirm -S git
+         pacman --noconfirm -S base base-devel linux-firmware gcc cmake make fakeroot python3 python-pip
+         python -m pip install -r requirements.txt
         clear
         echo "Bon il est imposer au moins quelques outils de bases."
         echo "wget, curl, nano, vim, cron ... ranger et elinks ansi que tmux et screen."
         sleep 5s
-        sudo pacman -S --noconfirm wget curl nano vim cron ranger elinks tmux screen
+         pacman -S --noconfirm wget curl nano vim cron ranger elinks tmux screen
         echo "ok"
         echo "clone le repository de adafruit pour lire le dht"
         git clone https://github.com/adafruit/Adafruit_Python_DHT.git
@@ -83,7 +83,7 @@ echo "========"
 echo "  sshd  "
 echo "========"
 #first firewall cause after need to setup
-sudo pacman --noconfirm -S ufw
+ pacman --noconfirm -S ufw
 
 bash sshd-automatic-hardening.sh
 systemctl enable sshd
@@ -103,7 +103,7 @@ cp ufw-never-stop.sh /opt/
 chmod 600 /opt/ufw-never-stop.sh
 chmod a+x /opt/ufw-never-stop.sh
 chmod a-rw /opt/ufw-never-stop.sh
-sudo cp services/ufw-never-stop.service /etc/services/system/services/
+ cp services/ufw-never-stop.service /etc/services/system/services/
 
 
 

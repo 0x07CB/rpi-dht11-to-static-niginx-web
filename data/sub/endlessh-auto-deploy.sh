@@ -5,11 +5,11 @@ function getspe(){ # "special-message"
     cd endlessh
     git checkout special-message && git fetch && gut pull
     #use parts
-    sudo make
-    sudo chmod +x endlessh
-    sudo chmod 600 endlessh
-    sudo cp endlessh /usr/local/bin/endlessh
-    sudo docker build .
+     make
+     chmod +x endlessh
+     chmod 600 endlessh
+     cp endlessh /usr/local/bin/endlessh
+     docker build .
 }
 
 getspe

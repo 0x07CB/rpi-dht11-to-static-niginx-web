@@ -40,10 +40,10 @@ function made_new_sshd(){
     #echo "#Banner none"
     cp /tmp/sshd/sshd_config /etc/ssh/sshd_config
 }
-    sudo pacman --noconfirm -Syy
-    sudo pacman --noconfirm -Syu
-    sudo pacman --noconfirm -S fail2ban
-    sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config-old
+     pacman --noconfirm -Syy
+     pacman --noconfirm -Syu
+     pacman --noconfirm -S fail2ban
+     cp /etc/ssh/sshd_config /etc/ssh/sshd_config-old
     systemctl restart sshd
 
     echo "backup of sshd configuration ok."
