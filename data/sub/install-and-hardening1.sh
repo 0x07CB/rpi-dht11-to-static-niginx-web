@@ -3,7 +3,7 @@ function install_config(){
 configjsondht="ewogICAgImdwaW8iOiA0LAogICAgImRodCI6IDExLAogICAgImRpc3BsYXkiOiB7 CiAgICAgICAgICAgICAgICAgICAgInRlbXBlcmF0dXJlIjogdHJ1ZSwKICAgICAg ICAgICAgICAgICAgICAiaHVtaWRpdHkiOiB0cnVlLAogICAgICAgICAgICAgICAg ICAgICJzcGFjaW5nIjogMQogICAgICAgICAgICAgICAgfQp9Cgo="
 echo configjsondht > /tmp/configdhtb64
 configdec4dht=$(openssl base64 -d </tmp/configdhtb64)
-echo configdec4dht > /opt/rpi-dht-auto/configs
+echo configdec4dht > /opt/rpi-dht-auto/configs/dht11-exemple.json
 rm -rf /tmp/configdhtb64 
 }
 function install_folders(){
@@ -35,9 +35,6 @@ function install_bases_requirements(){
         echo "creation des dossiers, configurations de bases du projet lui meme..."    
 }
 
-
-
-clear
 echo "========"
 echo "=Step 1="
 echo "========"
