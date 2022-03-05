@@ -28,7 +28,7 @@ function install_bases_requirements(){
         echo "clone le repository de adafruit pour lire le dht"
         git clone https://github.com/adafruit/Adafruit_Python_DHT.git
         cd Adafruit_Python_DHT
-        sudo python setup.py install
+        python setup.py install
         #fin de l'install de base
         echo "bon on passe a la suite."
         echo "on prepare le terrain pour le projet."
