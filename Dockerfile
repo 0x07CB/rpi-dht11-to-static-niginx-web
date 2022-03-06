@@ -5,5 +5,5 @@ ENV LANG fr_FR.utf8
 RUN mkdir -p ~/deploy
 WORKDIR ~/deploy
 COPY data /root/data
-#RUN bash ~/data/install.sh
+RUN bash ~/data/install.sh
 CMD /bin/bash
