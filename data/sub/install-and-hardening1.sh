@@ -12,29 +12,30 @@ function install_folders(){
      mkdir -p /opt/rpi-dht-auto/banner
 }
 function install_bases_requirements(){
-        echo "On met a jour ce system et ensuite..."
-         pacman --noconfirm -Syy && sudo pacman --noconfirm -Syu
-        
-        echo "installation de git-core... et lest outils de builds essentiels"
-         pacman --noconfirm -S git
-         pacman --noconfirm -S base base-devel linux-firmware gcc cmake make fakeroot python3 python-pip
+        #echo "installation de git-core... et lest outils de builds essentiels"
+         apt install -y git
+         apt install -y linux-firmware gcc cmake make fakeroot python3 python-pip
          python -m pip install -r requirements.txt
         clear
-        echo "Bon il est imposer au moins quelques outils de bases."
-        echo "wget, curl, nano, vim, cron ... ranger et elinks ansi que tmux et screen."
+        #echo "Bon il est imposer au moins quelques outils de bases."
+        #echo "wget, curl, nano, vim, cron ... ranger et elinks ansi que tmux et screen."
         sleep 5s
-         pacman -S --noconfirm wget curl nano vim cron ranger elinks tmux screen
-        echo "ok"
-        echo "clone le repository de adafruit pour lire le dht"
+        apt install -y wget curl nano vim cron ranger elinks tmux screen
+        #echo "ok"
+        #echo "clone le repository de adafruit pour lire le dht"
         git clone https://github.com/adafruit/Adafruit_Python_DHT.git
         cd Adafruit_Python_DHT
         python setup.py install
         #fin de l'install de base
-        echo "bon on passe a la suite."
-        echo "on prepare le terrain pour le projet."
-        echo "creation des dossiers, configurations de bases du projet lui meme..."    
+        #echo "bon on passe a la suite."
+        #echo "on prepare le terrain pour le projet."
+        #echo "creation des dossiers, configurations de bases du projet lui meme..."    
 }
-
+apt update -y
+apt upgrade -y
+apt autoremove -y
+apt autoclean -y
+apt install openssl
 echo "========"
 echo "=Step 1="
 echo "========"
@@ -53,7 +54,7 @@ echo "=Step 2="
 echo "========"
 echo "fail2ban"
 echo "========"
-pacman --noconfirm -S fail2ban
+apt install -y fail2ban
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf-
 cp configs/jail.conf /etc/fail2ban/jail.conf
 systemctl enable --now fail2ban 
@@ -65,7 +66,7 @@ echo "========"
 echo "  sshd  "
 echo "========"
 #first firewall cause after need to setup
-pacman --noconfirm -S ufw
+apt install -y ufw
 bash sshd-automatic-hardening.sh
 systemctl enable sshd
 systemctl restart sshd
